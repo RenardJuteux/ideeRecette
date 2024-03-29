@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <title>Recherche de Recettes de Cuisine</title>
+    <meta charset="utf-8" />
+    <!-- Link to the favicon for the website. -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon-js.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 id="header-title">Recherche de Recettes de Cuisine</h1>
+
+      <p id="description">
+        Cette page permet de rechercher des recettes de cuisine via l'API
+        publique d'Edamam.<br />
+        Saisissez les ingrédients ou le nom d'un plat pour rechercher des
+        recettes correspondantes et enregistrez vos recherches favorites pour
+        les retrouver facilement.
+      </p>
+      <!-- Checkbox for enabling/disabling dynamic search. -->
+      <div id="checkbox-wrapper-51">
+        <input id="cbx-51" type="checkbox" />
+        <label for="cbx-51" id="toggle-wrapper">
+          <div id="toggle">
+            <span>
+              <!-- SVG icon used within the toggle switch. -->
+              <svg viewBox="0 0 10 10" height="10px" width="10px">
+                <path
+                  d="M5,1 L5,1 C2.790861,1 1,2.790861 1,5 L1,5 C1,7.209139 2.790861,9 5,9 L5,9 C7.209139,9 9,7.209139 9,5 L9,5 C9,2.790861 7.209139,1 5,1 L5,9 L5,1 Z"
+                ></path>
+              </svg>
+            </span>
+          </div>
+          <!-- Label for the dynamic search toggle. -->
+          <span id="toggle-label">Recherche dynamique</span>
+        </label>
+      </div>
+    </header>
+
+    <main id="container">
+      <!-- Section dedicated to the search feature and displaying results. -->
+      <section id="search-section">
+        <div id="search-block">
+          <!-- Text input for entering search queries. -->
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Que cherchez-vous ?"
+          />
+
+          <!-- Buttons for search, favorites, and filter functionalities. -->
+          <button
+            id="search-button"
+            type="button"
+            title="Lancer la recherche"
+          >
+            <img src="images/loupe.svg" alt="Loupe pour recherche" width="22" />
+          </button>
+
+          <!-- Filter button with an SVG icon. -->
+          <button
+            id="favorites-button"
+            type="button"
+            disabled
+            title="Ajouter la recherche aux favoris"
+          >
+            <img src="images/etoile-vide.svg" alt="Etoile vide" width="22" />
+          </button>
+
+          <!-- Placeholder for an AJAX loading animation. -->
+          <button id="filter" title="filter">
+            <svg viewBox="0 0 512 512" height="1em">
+              <path
+                d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Résultats de recherche -->
+        <div id="bloc-gif-attente" style="display: none">
+          <img
+            src="images/attente-ajax.gif"
+            alt="GIF d'attente de résultats"
+            width="50"
+          />
+        </div>
+        <div id="block-results">
+          <!-- Search results will be displayed here by JavaScript. -->
+        </div>
+      </section>
+
+      <!-- Separator section, possibly for stylistic purposes. -->
+      <section id="section-separator"></section>
+
+      <!-- Section for displaying and managing favorite searches. -->
+      <section id="section-favorites">
+        <h2 id="title-favorite">Recherches favorites</h2>
+        <p>Cliquez sur une recherche favorite ci-dessous pour la relancer :</p>
+        <ul id="list-favorite">
+        <!-- Favorite searches will be displayed here via JavaScript -->
+        </ul>
+        <p id="no-results" style="display: none">
+          (Aucune recherche favorite)
+        </p>
+      </section>
+    </main>
+  </body>
+  <!-- Inclusion of JavaScript scripts -->
+  <script src="js/model/RecipeModel.js" defer></script>
+  <script src="js/view/RecipeView.js" defer></script>
+  <script src="js/controller/RecipeController.js" defer></script>
+  <script src="js/main.js" defer></script>
+</html>

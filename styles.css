@@ -1,0 +1,507 @@
+/* Importation de la police Roboto */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+/* Defines a set of custom properties (CSS variables) for colors used throughout the site. */
+:root {
+  --text-color: #fafafa;
+  --background: #4C4C4C; 
+  --background-button: #bebebe;
+  --main-green: rgb(26, 188, 156);
+  --active-green: rgb(20, 156, 128);
+  --almost-black: #2d2d2d;
+}
+
+* {
+  color: var(--almost-black);
+}
+
+/* Sets the background, font, and removes default margin and padding for the body. */
+body {
+  background-size: cover;
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+/* Custom scrollbar styling for the body to improve aesthetics. */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* Styles the header with a semi-transparent background and centers its content. */
+header {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+#description {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+#header-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+/* Creates a flex container for main content, allowing for a responsive layout. */
+#container {
+  display: flex;
+  justify-content: space-between; 
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+#search-section {
+  flex: 70%; 
+  margin-right: 2%; 
+}
+#search-block, #section-favorites {
+  background: rgba(255, 255, 255, 0.8); 
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+
+#section-favorites {
+  flex-grow: 1;
+  width: 300px;
+}
+
+#search-block{
+  display: flex;
+  margin-bottom: 20px;
+  flex-grow: 2;
+}
+
+#search-input{
+  flex: 1;
+  margin-right: 10px;
+}
+
+#search-button, #favorites-button, #filter {
+  background-color: var(--background-button);
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+#filter svg{
+  fill: var(--text-color);
+}
+#filter{
+  margin-left: 10px;
+  width: 50px;
+}
+#search-button:hover, #favorites-button:hover, #filter:hover {
+  background-color: var(--active-green);
+}
+/* Styles and hover effects for the recipe panel and its elements. */
+#recipe-panel {
+  background-color: #f8f9fa;
+  border-right: 2px solid #dee2e6; 
+  padding: 20px; 
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+}
+
+#recipe-panel p {
+  margin: 10px 0; 
+  padding: 10px; 
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s; 
+}
+
+#recipe-panel p:hover {
+  background-color: #e9ecef;
+  transform: translateX(10px);
+  cursor: pointer;
+}
+
+/* Styles for the close button and bookmark icon, including hover effects. */
+.close-popup-btn {
+  cursor: pointer; 
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: #495057; 
+}
+
+.close-popup-btn:hover {
+  color: #000; 
+}
+
+.bookmark-icon {
+  transition: transform 0.2s; 
+}
+
+.bookmark-icon:hover {
+  transform: scale(1.1);
+}
+
+.popup-img, #youtube-video-container iframe {
+  max-width: 100%; 
+  border-radius: 5px;
+}
+
+/* Styles for the results block, including individual results, headings, and descriptions. */
+#block-results, #list-favorite {
+  background: #fff;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+#block-results p {
+  background: rgba(0, 0, 0, 0.7); 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  margin-bottom: 16px; 
+  padding: 12px; 
+  color: var(--text-color);
+  transition: transform 0.2s, box-shadow 0.2s; 
+  cursor: pointer;
+}
+
+#block-results p:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#block-results h3 {
+  color: var(--main-green); 
+  margin-top: 0;
+}
+
+#block-results .recipe-description {
+  font-size: 0.9rem;
+  color: var(--text-color); 
+}
+/* Styles for the list of favorite searches, including hover effects. */
+#list-favorite li {
+  cursor: pointer;
+  margin: 5px 0;
+}
+ 
+#list-favorite li:hover {
+  color: var(--main-green);
+}
+
+#title_favorite{
+  margin-top: 0;
+}
+
+#search-button{
+  background-color: var(--background-button);
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 10px 15px;
+
+}
+
+#favorites-button{
+  background-color: var(--background-button);
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 15px; 
+}
+
+#recipe-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001; 
+  border: 2px solid var(--main-green); 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--almost-black);
+  color: var(--text-color); 
+  width: 90%;
+  max-width: 640px;
+  overflow-y: auto;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Additional styles for elements like the popup for recipes, including the scrollbar within it. */
+
+#recipe-popup::-webkit-scrollbar {
+  border-radius: 0 5px;
+  width: 10px;
+}
+
+/* Track */
+#recipe-popup::-webkit-scrollbar-track {
+  border-radius: 0 5px;
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+#recipe-popup::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+#recipe-popup::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+#recipe-panel::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#recipe-panel::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+#recipe-panel::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+#recipe-panel::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* Additional hover effects and styles for various elements like the close button, dynamic search block, and custom toggle switch. */
+
+.close-popup-btn{
+  margin-bottom: 20px;
+  width: 50px;
+  border: none;
+  background-color: var(--background-button);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.close-popup-btn:hover {
+  transform: scale(1.1); 
+  background-color: white; 
+  color: black; 
+  cursor: pointer; 
+}
+
+ #bloc-recherche-dynamique {
+  position: fixed;
+  top: 20px; 
+  left: 20px; 
+  z-index: 100; 
+}
+
+#toggle-wrapper{
+  padding-top: 10px;
+}
+#toggle-label{
+  padding-left: 30px;
+  color: var(--text-color);
+}
+#checkbox-wrapper-51 {
+  display: flex;
+  align-items: center;
+}
+
+#checkbox-wrapper-51 input[type="checkbox"] {
+  visibility: hidden;
+  position: absolute;
+}
+
+#checkbox-wrapper-51 #toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#checkbox-wrapper-51 #toggle {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  background: #c8ccd4;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+#checkbox-wrapper-51 #toggle span {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(154,153,153,0.75);
+  transition: transform 0.2s ease;
+}
+
+#checkbox-wrapper-51 input[type="checkbox"]:checked + #toggle-wrapper #toggle {
+  background: #1175c7;
+}
+
+#checkbox-wrapper-51 input[type="checkbox"]:checked + #toggle-wrapper #toggle span {
+  transform: translateX(18px);
+}
+
+.popup-header {
+  display: flex;
+  width: 100%; 
+  justify-content: space-between;
+  margin-bottom: 20px; 
+}
+/* Adjustments for media content (images, videos) to ensure they fit well within their containers. */
+.popup-img, .popup-video iframe {
+  width: 48%;
+  aspect-ratio: 16 / 9; 
+
+}
+
+.popup-content {
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-ingredients {
+  text-align: left; 
+  width: 100%; 
+  color: var(--text-color);
+}
+
+.popup-ingredients li{
+  margin-bottom: 5px; 
+  color: var(--text-color);
+}
+
+.title-recette{
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.popup-video iframe{
+  width: 300px;
+  height: auto;
+}
+
+
+
+  /* Styling for a custom plus button, including hover and focus effects. */
+
+.plusButton { 
+  /* Config start */
+  --plus_sideLength: 2.5rem;
+  --plus_topRightTriangleSideLength: 0.9rem;
+  /* Config end */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  width: var(--plus_sideLength);
+  height: var(--plus_sideLength);
+  background-color: var(--background-button);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.plusButton::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.plusButton:hover {
+  cursor: pointer;
+}
+
+.plusButton:hover::before {
+  --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton:focus-visible::before {
+  --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton>.plusIcon {
+  fill: white;
+  width: calc(var(--plus_sideLength) * 0.7);
+  height: calc(var(--plus_sideLength) * 0.7);
+  z-index: 1;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.plusButton:hover>.plusIcon {
+  fill: black;
+  transform: rotate(180deg);
+}
+
+.plusButton:focus-visible>.plusIcon {
+  fill: black;
+  transform: rotate(180deg);
+}
+
+/* Responsive adjustments for different screen sizes, ensuring the layout adapts well on smaller screens. */
+@media (max-width: 600px) {
+  .popup-header {
+    flex-direction: column; 
+  }
+
+  .popup-img, .popup-video iframe {
+    width: 100%; 
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Media-query pour gérer l'affichage sur petit écran */
+@media (max-width: 900px) {
+  #container {
+    flex-direction: column-reverse;
+  }
+
+  #section-separator {
+    border-top: 2px dashed var(--main-green);
+    margin: 0 -10px 40px -10px;
+  }
+
+  #section-favorites {
+    flex: 0;
+  }
+}
